@@ -7,12 +7,14 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from openai import OpenAI
 from PIL import Image, ImageDraw, ImageFont
 from img2pdf import convert
+import random
 
 # dotenv
 load_dotenv(verbose=True)
 
 # Flask
 app = Flask(__name__)
+app.config["SECRET_KEY"] = random.random()
 
 # Google OAuth
 client_config = {
