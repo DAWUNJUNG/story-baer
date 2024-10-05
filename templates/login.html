@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이야기 곰</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+<body id="particles-js"></body>
+<main class="main">
+  <div class="container">
+    <section class="wrapper">
+      <div class="heading">
+          <img class="logo" src="{{ url_for('static', filename='img/baer-logo.jpg') }}"/>
+        <h1 class="text text-large">로그인</h1>
+        <p class="text text-normal">아직 계정이 없으신가요? <span><a href="#" class="text text-links">새로운 계정</a>을 만들어보세요!</span>
+        </p>
+      </div>
+      <form name="signin" class="form">
+        <div class="input-control">
+          <label for="email" class="input-label" hidden>이메일</label>
+          <input type="email" name="email" id="email" class="input-field" placeholder="이메일">
+        </div>
+        <div class="input-control">
+          <label for="password" class="input-label" hidden>비밀번호</label>
+          <input type="password" name="password" id="password" class="input-field" placeholder="비밀번호">
+        </div>
+        <div class="input-control">
+          <a href="#" class="text text-links">비밀번호를 잊어버리셨나요?</a>
+          <input type="submit" name="submit" class="input-submit" value="로그인" disabled>
+        </div>
+      </form>
+      <div class="striped">
+        <span class="striped-line"></span>
+        <span class="striped-text">Or</span>
+        <span class="striped-line"></span>
+      </div>
+      <div class="method">
+        <div class="method-control">
+          <a href="{{ googleAuthUrl }}" class="method-action">
+            <img class="loginIcon" src="{{ url_for('static', filename='img/google-login-icon.png') }}"/>
+            <span>Sign in with Google</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+</body>
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</html>

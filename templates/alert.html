@@ -1,0 +1,8 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>
+            alert("{{messages[-1]}}");
+            location.replace({{ redirectUrl }})
+        </script>
+    {% endif %}
+{% endwith %}
