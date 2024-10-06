@@ -7,14 +7,13 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from openai import OpenAI
 from PIL import Image, ImageDraw, ImageFont
 from img2pdf import convert
-import random
 
 # dotenv
 load_dotenv(verbose=True)
 
 # Flask
 app = Flask(__name__)
-app.config["SECRET_KEY"] = random.random()
+app.secret_key = os.urandom(24)
 
 # Google OAuth
 client_config = {
@@ -60,11 +59,11 @@ def list():
     bookList = []
     for dirName in os.listdir('static/storage'):
         bookList.append({
-                "name": dirName,
-                "path": f"storage/{dirName}",
-                "thumbnail": f"storage/{dirName}/cover.png",
-                "ebook": f"storage/{dirName}/ebook.pdf",
-            })
+            "name": dirName,
+            "path": f"storage/{dirName}",
+            "thumbnail": f"storage/{dirName}/cover.png",
+            "ebook": f"storage/{dirName}/ebook.pdf",
+        })
 
     return render_template('main.html', bookList=bookList)
 
@@ -72,11 +71,6 @@ def list():
 @app.route('/new-book', methods=['GET'])
 def newBook():
     return render_template('newBook.html')
-
-
-@app.route('/test', methods=['GET'])
-def test():
-    return render_template('imagePage.html')
 
 
 @app.route('/make', methods=['POST'])

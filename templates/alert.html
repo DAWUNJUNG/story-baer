@@ -2,7 +2,7 @@
     {% if messages %}
         <script>
             alert("{{messages[-1]}}");
-            location.replace({{ redirectUrl }})
+            location.replace('{{ redirectUrl }}');
         </script>
     {% endif %}
 {% endwith %}
